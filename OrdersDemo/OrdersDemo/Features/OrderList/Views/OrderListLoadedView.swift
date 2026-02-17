@@ -56,6 +56,8 @@ public struct OrderListLoadedView: View {
                     selectedOrder = order
                 } label: {
                     OrderRowView(order: order)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .contentShape(Rectangle())
                 }
                 .buttonStyle(.plain)
                 .onAppear {
