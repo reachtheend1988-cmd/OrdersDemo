@@ -11,7 +11,8 @@ import SwiftUI
 struct OrdersDemoApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            let environment = AppEnvironment(ordersRepository: MockOrdersRepository.demo())
+            ContentView(environment: environment)
         }
     }
 }

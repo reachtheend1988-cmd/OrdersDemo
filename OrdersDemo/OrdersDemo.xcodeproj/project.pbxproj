@@ -6,14 +6,30 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXContainerItemProxy section */
+		B2F51F0A2F4480000061BEE8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B2F51ED22F44768C0061BEE8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B2F51ED92F44768C0061BEE8;
+			remoteInfo = OrdersDemo;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		B2F51EDA2F44768C0061BEE8 /* OrdersDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OrdersDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2F51F002F4480000061BEE8 /* OrdersDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OrdersDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		B2F51EDC2F44768C0061BEE8 /* OrdersDemo */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = OrdersDemo;
+			sourceTree = "<group>";
+		};
+		B2F51F012F4480000061BEE8 /* OrdersDemoTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = OrdersDemoTests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -26,14 +42,30 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B2F51F022F4480000061BEE8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B2C489EC2F4480E400E1F6CF /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				B2F51F012F4480000061BEE8 /* OrdersDemoTests */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		B2F51ED12F44768C0061BEE8 = {
 			isa = PBXGroup;
 			children = (
 				B2F51EDC2F44768C0061BEE8 /* OrdersDemo */,
 				B2F51EDB2F44768C0061BEE8 /* Products */,
+				B2C489EC2F4480E400E1F6CF /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -41,6 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				B2F51EDA2F44768C0061BEE8 /* OrdersDemo.app */,
+				B2F51F002F4480000061BEE8 /* OrdersDemoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -70,6 +103,29 @@
 			productReference = B2F51EDA2F44768C0061BEE8 /* OrdersDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
+		B2F51F052F4480000061BEE8 /* OrdersDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B2F51F062F4480000061BEE8 /* Build configuration list for PBXNativeTarget "OrdersDemoTests" */;
+			buildPhases = (
+				B2F51F032F4480000061BEE8 /* Sources */,
+				B2F51F022F4480000061BEE8 /* Frameworks */,
+				B2F51F042F4480000061BEE8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B2F51F092F4480000061BEE8 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				B2F51F012F4480000061BEE8 /* OrdersDemoTests */,
+			);
+			name = OrdersDemoTests;
+			packageProductDependencies = (
+			);
+			productName = OrdersDemoTests;
+			productReference = B2F51F002F4480000061BEE8 /* OrdersDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -81,6 +137,9 @@
 				LastUpgradeCheck = 2620;
 				TargetAttributes = {
 					B2F51ED92F44768C0061BEE8 = {
+						CreatedOnToolsVersion = 26.2;
+					};
+					B2F51F052F4480000061BEE8 = {
 						CreatedOnToolsVersion = 26.2;
 					};
 				};
@@ -100,12 +159,20 @@
 			projectRoot = "";
 			targets = (
 				B2F51ED92F44768C0061BEE8 /* OrdersDemo */,
+				B2F51F052F4480000061BEE8 /* OrdersDemoTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		B2F51ED82F44768C0061BEE8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B2F51F042F4480000061BEE8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -122,7 +189,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B2F51F032F4480000061BEE8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B2F51F092F4480000061BEE8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B2F51ED92F44768C0061BEE8 /* OrdersDemo */;
+			targetProxy = B2F51F0A2F4480000061BEE8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		B2F51EE32F44768F0061BEE8 /* Debug */ = {
@@ -178,7 +260,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -236,7 +318,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -261,6 +343,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -293,6 +376,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -307,6 +391,52 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		B2F51F072F4480000061BEE8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9ZX7788V4K;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = OrdersDemoTests;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ios.interview.Demo.OrdersDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OrdersDemo.app/OrdersDemo";
+			};
+			name = Debug;
+		};
+		B2F51F082F4480000061BEE8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9ZX7788V4K;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = OrdersDemoTests;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ios.interview.Demo.OrdersDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OrdersDemo.app/OrdersDemo";
 			};
 			name = Release;
 		};
@@ -327,6 +457,15 @@
 			buildConfigurations = (
 				B2F51EE62F44768F0061BEE8 /* Debug */,
 				B2F51EE72F44768F0061BEE8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B2F51F062F4480000061BEE8 /* Build configuration list for PBXNativeTarget "OrdersDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B2F51F072F4480000061BEE8 /* Debug */,
+				B2F51F082F4480000061BEE8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
