@@ -1,8 +1,6 @@
 import SwiftUI
 
 public struct OrderListFilteredEmptyView: View {
-    public init() {}
-
     public var body: some View {
         VStack(spacing: 16) {
             Image(systemName: "line.3.horizontal.decrease.circle")

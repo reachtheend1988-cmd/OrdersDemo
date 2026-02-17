@@ -18,7 +18,7 @@ final class OrderDetailsViewModelTests: XCTestCase {
             fetchBehavior: .success(delaySeconds: 0),
             statusSequences: [id: [.inTransit, .delivered]],
             statusUpdateIntervalSeconds: 0,
-            sleeper: .immediate
+            requestDelay: .immediate
         )
 
         let vm = OrderDetailsViewModel(order: order, ordersRepository: repo)

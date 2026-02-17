@@ -10,7 +10,7 @@ final class OrderListViewModelTests: XCTestCase {
             fetchBehavior: .success(delaySeconds: 0),
             statusSequences: [:],
             statusUpdateIntervalSeconds: 0,
-            sleeper: .immediate
+            requestDelay: .immediate
         )
 
         let vm = OrderListViewModel(ordersRepository: repo)
@@ -32,7 +32,7 @@ final class OrderListViewModelTests: XCTestCase {
             fetchBehavior: .empty(delaySeconds: 0),
             statusSequences: [:],
             statusUpdateIntervalSeconds: 0,
-            sleeper: .immediate
+            requestDelay: .immediate
         )
 
         let vm = OrderListViewModel(ordersRepository: repo)
@@ -50,7 +50,7 @@ final class OrderListViewModelTests: XCTestCase {
             fetchBehavior: .failure(delaySeconds: 0),
             statusSequences: [:],
             statusUpdateIntervalSeconds: 0,
-            sleeper: .immediate
+            requestDelay: .immediate
         )
 
         let vm = OrderListViewModel(ordersRepository: repo)
@@ -72,7 +72,7 @@ final class OrderListViewModelTests: XCTestCase {
             fetchBehavior: .success(delaySeconds: 0),
             statusSequences: [:],
             statusUpdateIntervalSeconds: 0,
-            sleeper: .immediate
+            requestDelay: .immediate
         )
 
         let vm = OrderListViewModel(ordersRepository: repo)

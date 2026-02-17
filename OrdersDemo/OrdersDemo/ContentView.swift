@@ -8,17 +8,16 @@
 import SwiftUI
 
 struct ContentView: View {
-    let environment: AppEnvironment
-
     var body: some View {
-        AppRootView(environment: environment)
+        AppRootView()
     }
 }
 
 #if DEBUG
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(environment: AppEnvironment(ordersRepository: MockOrdersRepository.demo(sleeper: .immediate)))
+        ContentView()
+            .environment(\.appEnvironment, AppEnvironment(ordersRepository: MockOrdersRepository.demo(requestDelay: .immediate)))
     }
 }
 #endif

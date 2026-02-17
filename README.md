@@ -41,7 +41,7 @@ Tests are deterministic and focused on state and business logic.
 - **Details updates**
   - `OrderDetailsViewModelTests` verifies the view model consumes the status update stream.
 
-The mock repository supports injected sleeping via `AnySleeper` so tests can run with `.immediate` (no real timers).
+The mock repository supports injected delay via `RequestDelay` so tests can run with `.immediate` (no real timers).
 
 ## How to run
 
@@ -78,7 +78,7 @@ xcodebuild -project "OrdersDemo.xcodeproj" -scheme "OrdersDemo" -sdk iphonesimul
 
 - `OrdersRepository` enables dependency injection and isolated tests.
 - `LoadState` makes transitions explicit and easy to assert.
-- `AnySleeper` removes real time from tests.
+- `RequestDelay` removes real time from tests (use `.immediate` in tests).
 
 ### Safe evolution (e.g. adding `CANCELLED`)
 

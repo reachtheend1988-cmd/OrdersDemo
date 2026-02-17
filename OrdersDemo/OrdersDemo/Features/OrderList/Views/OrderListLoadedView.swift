@@ -2,11 +2,10 @@ import SwiftUI
 
 public struct OrderListLoadedView: View {
     @ObservedObject private var viewModel: OrderListViewModel
-    private let environment: AppEnvironment
+    @Environment(\.appEnvironment) private var environment
 
-    public init(viewModel: OrderListViewModel, environment: AppEnvironment) {
+    public init(viewModel: OrderListViewModel) {
         self.viewModel = viewModel
-        self.environment = environment
     }
 
     public var body: some View {

@@ -12,7 +12,7 @@ public enum OrdersFetchBehavior: Equatable, Sendable {
 }
 
 public actor MockOrdersRepository: OrdersRepository {
-    private let sleeper: AnySleeper
+    private let requestDelay: RequestDelay
 
     private var orders: [Order]
     private let fetchBehavior: OrdersFetchBehavior
@@ -25,19 +25,19 @@ public actor MockOrdersRepository: OrdersRepository {
         fetchBehavior: OrdersFetchBehavior,
         statusSequences: [UUID: [OrderStatus]],
         statusUpdateIntervalSeconds: TimeInterval = 2,
-        sleeper: AnySleeper = .taskSleep
+        requestDelay: RequestDelay = .taskSleep
     ) {
         self.orders = orders
         self.fetchBehavior = fetchBehavior
         self.statusSequences = statusSequences
         self.statusUpdateIntervalSeconds = statusUpdateIntervalSeconds
-        self.sleeper = sleeper
+        self.requestDelay = requestDelay
     }
 
     public func fetchOrders(cursor: String?, limit: Int) async throws -> OrdersPage {
         switch fetchBehavior {
         case .success(let delaySeconds):
-            await sleeper.sleep(seconds: delaySeconds)
+            await requestDelay.sleep(seconds: delaySeconds)
             let sorted = orders.sorted { $0.createdAt > $1.createdAt }
             let startIndex: Int
             if let cursor, let cursorUUID = UUID(uuidString: cursor), let idx = sorted.firstIndex(where: { $0.id == cursorUUID }) {
@@ -53,10 +53,10 @@ public actor MockOrdersRepository: OrdersRepository {
             let nextCursor = endIndex < sorted.count ? page.last?.id.uuidString : nil
             return OrdersPage(orders: page, nextCursor: nextCursor)
         case .empty(let delaySeconds):
-            await sleeper.sleep(seconds: delaySeconds)
+            await requestDelay.sleep(seconds: delaySeconds)
             return OrdersPage(orders: [], nextCursor: nil)
         case .failure(let delaySeconds):
-            await sleeper.sleep(seconds: delaySeconds)
+            await requestDelay.sleep(seconds: delaySeconds)
             throw MockOrdersError.simulatedFailure
         }
     }
@@ -71,7 +71,7 @@ public actor MockOrdersRepository: OrdersRepository {
             }
             let (sequence, interval) = await self.sequenceAndInterval(for: orderID)
             for status in sequence {
-                await self.sleeper.sleep(seconds: interval)
+                await self.requestDelay.sleep(seconds: interval)
                 subject.send(status)
             }
             subject.send(completion: .finished)
@@ -87,7 +87,7 @@ public actor MockOrdersRepository: OrdersRepository {
 public extension MockOrdersRepository {
     static func demo(
         bundle: Bundle = .main,
-        sleeper: AnySleeper = .taskSleep
+        requestDelay: RequestDelay = .taskSleep
     ) -> MockOrdersRepository {
         let orders = Self.loadDemoOrders(from: bundle)
 
@@ -104,7 +104,7 @@ public extension MockOrdersRepository {
             fetchBehavior: .success(delaySeconds: 1.0),
             statusSequences: sequences,
             statusUpdateIntervalSeconds: 2.0,
-            sleeper: sleeper
+            requestDelay: requestDelay
         )
     }
 

@@ -17,7 +17,7 @@ final class MockOrdersRepositoryTests: XCTestCase {
             fetchBehavior: .success(delaySeconds: 0),
             statusSequences: [:],
             statusUpdateIntervalSeconds: 0,
-            sleeper: .immediate
+            requestDelay: .immediate
         )
 
         let page = try await repo.fetchOrders(cursor: nil, limit: 10)
@@ -31,7 +31,7 @@ final class MockOrdersRepositoryTests: XCTestCase {
             fetchBehavior: .empty(delaySeconds: 0),
             statusSequences: [:],
             statusUpdateIntervalSeconds: 0,
-            sleeper: .immediate
+            requestDelay: .immediate
         )
 
         let page = try await repo.fetchOrders(cursor: nil, limit: 10)
@@ -45,7 +45,7 @@ final class MockOrdersRepositoryTests: XCTestCase {
             fetchBehavior: .failure(delaySeconds: 0),
             statusSequences: [:],
             statusUpdateIntervalSeconds: 0,
-            sleeper: .immediate
+            requestDelay: .immediate
         )
 
         do {
@@ -71,7 +71,7 @@ final class MockOrdersRepositoryTests: XCTestCase {
             fetchBehavior: .success(delaySeconds: 0),
             statusSequences: [:],
             statusUpdateIntervalSeconds: 0,
-            sleeper: .immediate
+            requestDelay: .immediate
         )
 
         let first = try await repo.fetchOrders(cursor: nil, limit: 2)
@@ -94,7 +94,7 @@ final class MockOrdersRepositoryTests: XCTestCase {
             fetchBehavior: .success(delaySeconds: 0),
             statusSequences: [id: [.inTransit, .delivered]],
             statusUpdateIntervalSeconds: 0,
-            sleeper: .immediate
+            requestDelay: .immediate
         )
 
         var received: [OrderStatus] = []

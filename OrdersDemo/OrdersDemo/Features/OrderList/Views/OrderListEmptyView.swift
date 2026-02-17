@@ -1,8 +1,6 @@
 import SwiftUI
 
 public struct OrderListEmptyView: View {
-    public init() {}
-
     public var body: some View {
         VStack(spacing: 16) {
             Image(systemName: "shippingbox")
