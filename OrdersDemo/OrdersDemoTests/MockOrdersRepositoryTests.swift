@@ -89,19 +89,21 @@ final class MockOrdersRepositoryTests: XCTestCase {
 
     func testStatusUpdates_yieldsConfiguredSequence() async {
         let id = UUID()
+        let order = Order(id: id, customerName: "A", destination: "B", createdAt: Date(), status: .pending)
         let repo = MockOrdersRepository(
-            orders: [],
+            orders: [order],
             fetchBehavior: .success(delaySeconds: 0),
-            statusSequences: [id: [.inTransit, .delivered]],
+            statusSequences: [:],
             statusUpdateIntervalSeconds: 0,
             requestDelay: .immediate
         )
+
+        _ = try? await repo.fetchOrders(cursor: nil, limit: 10)
 
         var received: [OrderStatus] = []
         for await status in repo.statusUpdates(for: id).values {
             received.append(status)
         }
-
         XCTAssertEqual(received, [.inTransit, .delivered])
     }
 }

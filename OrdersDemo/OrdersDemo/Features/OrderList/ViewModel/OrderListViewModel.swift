@@ -13,12 +13,29 @@ public final class OrderListViewModel: ObservableObject {
     private let ordersRepository: OrdersRepository
     private var loadTask: Task<Void, Never>?
     private var loadMoreTask: Task<Void, Never>?
+    private var orderStatusCancellable: AnyCancellable?
 
     public init(ordersRepository: OrdersRepository) {
         self.ordersRepository = ordersRepository
+        self.orderStatusCancellable = ordersRepository.orderStatusUpdates()
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] orderID, status in
+                self?.applyOrderStatusUpdate(orderID: orderID, status: status)
+            }
+    }
+
+    private func applyOrderStatusUpdate(orderID: UUID, status: OrderStatus) {
+        guard case .loaded(var orders) = state else { return }
+        guard let index = orders.firstIndex(where: { $0.id == orderID }) else { return }
+        var order = orders[index]
+        order.status = status
+        orders[index] = order
+        state = .loaded(orders)
     }
 
     public func onAppear() {
+        // Only load once automatically. After that, keep the loaded list updated via `orderStatusUpdates()`.
+        // Refetching (cursor/nil) should only happen when the user explicitly taps "Reload".
         guard case .idle = state else { return }
         reload()
     }

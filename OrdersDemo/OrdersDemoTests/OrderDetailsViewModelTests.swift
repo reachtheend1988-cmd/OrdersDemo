@@ -16,7 +16,7 @@ final class OrderDetailsViewModelTests: XCTestCase {
         let repo = MockOrdersRepository(
             orders: [order],
             fetchBehavior: .success(delaySeconds: 0),
-            statusSequences: [id: [.inTransit, .delivered]],
+            statusSequences: [:],
             statusUpdateIntervalSeconds: 0,
             requestDelay: .immediate
         )
@@ -24,6 +24,7 @@ final class OrderDetailsViewModelTests: XCTestCase {
         let vm = OrderDetailsViewModel(order: order, ordersRepository: repo)
         XCTAssertEqual(vm.currentStatus, .pending)
 
+        _ = try? await repo.fetchOrders(cursor: nil, limit: 10)
         vm.onAppear()
 
         let reachedDelivered = await eventually {
