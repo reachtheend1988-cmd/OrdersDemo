@@ -12,7 +12,7 @@ struct OrdersDemoApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environment(\.appEnvironment, AppEnvironment(ordersRepository: MockOrdersRepository.demo()))
+                .environment(\.ordersAppEnvironment, OrdersAppEnvironment(ordersRepository: MockOrdersRepository.demo()))
         }
     }
 }

@@ -17,7 +17,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            .environment(\.appEnvironment, AppEnvironment(ordersRepository: MockOrdersRepository.demo(requestDelay: .immediate)))
+            .environment(\.ordersAppEnvironment, OrdersAppEnvironment(ordersRepository: MockOrdersRepository.demo(requestDelay: .immediate)))
     }
 }
 #endif

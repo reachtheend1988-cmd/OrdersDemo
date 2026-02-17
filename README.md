@@ -9,11 +9,11 @@ This repo implements the two‑screen iOS Delivery Tracking app described in `in
 - **Domain**: `Order`, `OrderStatus` (no UI formatting concerns)
 - **Data**: `OrdersRepository` protocol + `MockOrdersRepository` implementation
 - **State**: Explicit `LoadState<Value>` for predictable UI rendering
-- **Dependency Injection**: `AppEnvironment` is created in `OrdersDemoApp` and passed down to features
+- **Dependency Injection**: `OrdersAppEnvironment` is created in `OrdersDemoApp` and passed down to features
 
 ### Data flow
 
-1. `OrdersDemoApp` builds an `AppEnvironment` using `MockOrdersRepository.demo()`.
+1. `OrdersDemoApp` builds an `OrdersAppEnvironment` using `MockOrdersRepository.demo()`.
 2. `AppRootView` hosts a `NavigationView` (stack style) for compatibility with the deployment target.
 3. **Order List**
    - `OrderListViewModel.reload()` transitions: `idle → loading → loaded/empty/failed`.

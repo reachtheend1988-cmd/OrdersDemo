@@ -3,7 +3,7 @@ import SwiftUI
 public struct OrderDetailsView: View {
     @StateObject private var viewModel: OrderDetailsViewModel
 
-    public init(environment: AppEnvironment, order: Order) {
+    public init(environment: OrdersAppEnvironment, order: Order) {
         _viewModel = StateObject(
             wrappedValue: OrderDetailsViewModel(
                 order: order,
