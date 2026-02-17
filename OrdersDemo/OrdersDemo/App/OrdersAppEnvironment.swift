@@ -2,7 +2,7 @@ import Foundation
 import SwiftUI
 
 /// Holds app-wide dependencies (e.g. the orders repository) and is injected via SwiftUI’s environment.
-/// A singleton is another valid option; this project uses environment injection: the app creates one instance at launch and passes it down.
+
 public struct OrdersAppEnvironment: Sendable {
     public var ordersRepository: OrdersRepository
 

@@ -13,7 +13,7 @@ public enum OrdersFetchBehavior: Equatable, Sendable {
 
 /// Thread-safe mock repository.
 /// - Uses a private serial queue for state (`orders`, `statusSequences`)
-/// - Uses Combine publishers for updates (no actor isolation, no `nonisolated(unsafe)`)
+/// - Uses Combine publishers for updates
 public final class MockOrdersRepository: OrdersRepository {
     private let requestDelay: RequestDelay
 
