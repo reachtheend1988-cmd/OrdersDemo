@@ -43,6 +43,11 @@ Tests are deterministic and focused on state and business logic.
 
 The mock repository supports injected delay via `RequestDelay` so tests can run with `.immediate` (no real timers).
 
+### What I intentionally did not test
+
+- **UI rendering details** (no snapshot tests): I focused on ViewModel/state tests since they’re fast, deterministic, and cover the core behavior.
+- **End-to-end navigation flows**: The app is small and the risk is low; these would be good candidates for lightweight UI tests in a larger codebase.
+
 ## How to run
 
 ### Run the app

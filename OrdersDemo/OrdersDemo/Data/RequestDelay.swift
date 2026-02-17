@@ -15,10 +15,10 @@ public struct RequestDelay: Sendable {
 
 public extension RequestDelay {
     /// No delay; use in tests so requests complete immediately.
-    nonisolated static let immediate = RequestDelay { _ in }
+    static let immediate = RequestDelay { _ in }
 
     /// Real delay using `Task.sleep`; use in the app to simulate API latency.
-    nonisolated static let taskSleep = RequestDelay { seconds in
+    static let taskSleep = RequestDelay { seconds in
         guard seconds > 0 else { return }
         let nanoseconds = UInt64(seconds * 1_000_000_000)
         try? await Task.sleep(nanoseconds: nanoseconds)

@@ -7,6 +7,7 @@ public final class OrderListViewModel: ObservableObject {
 
     @Published public private(set) var state: LoadState<[Order]> = .idle
     @Published public var filter: OrderStatusFilter = .all
+    /// Opaque pagination token from the repository; we use `String` so the API can use any format (e.g. UUID string, token) without the UI depending on it.
     @Published public private(set) var nextCursor: String?
     @Published public private(set) var isLoadingMore = false
 

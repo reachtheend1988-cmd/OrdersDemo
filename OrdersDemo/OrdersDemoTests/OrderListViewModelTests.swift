@@ -90,5 +90,58 @@ final class OrderListViewModelTests: XCTestCase {
         vm.filter = .delivered
         XCTAssertEqual(vm.filteredOrders, [delivered])
     }
+
+    func testReload_errorThenRetryTransitionsToLoaded() async {
+        let order = Order(id: UUID(), customerName: "A", destination: "B", createdAt: Date(), status: .pending)
+
+        let repo = TestOrdersRepository(fetchResults: [
+            .failure(MockOrdersError.simulatedFailure),
+            .success(OrdersPage(orders: [order], nextCursor: nil)),
+        ])
+
+        let vm = OrderListViewModel(ordersRepository: repo)
+
+        vm.reload()
+        let didFail = await eventually {
+            if case .failed = vm.state { return true }
+            return false
+        }
+        XCTAssertTrue(didFail)
+
+        vm.reload()
+        let didLoad = await eventually {
+            if case .loaded = vm.state { return true }
+            return false
+        }
+        XCTAssertTrue(didLoad)
+
+        XCTAssertEqual(vm.filteredOrders, [order])
+    }
+
+    func testReload_emptyThenPopulatedTransitionsToLoaded() async {
+        let order = Order(id: UUID(), customerName: "A", destination: "B", createdAt: Date(), status: .pending)
+
+        let repo = TestOrdersRepository(fetchResults: [
+            .success(OrdersPage(orders: [], nextCursor: nil)),
+            .success(OrdersPage(orders: [order], nextCursor: nil)),
+        ])
+
+        let vm = OrderListViewModel(ordersRepository: repo)
+
+        vm.reload()
+        let didBecomeEmpty = await eventually {
+            vm.state == .empty
+        }
+        XCTAssertTrue(didBecomeEmpty)
+
+        vm.reload()
+        let didLoad = await eventually {
+            if case .loaded = vm.state { return true }
+            return false
+        }
+        XCTAssertTrue(didLoad)
+
+        XCTAssertEqual(vm.filteredOrders, [order])
+    }
 }
 

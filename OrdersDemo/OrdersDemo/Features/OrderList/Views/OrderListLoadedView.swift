@@ -71,7 +71,7 @@ public struct OrderListLoadedView: View {
                         ProgressView()
                             .padding()
                     } else {
-                        Text("Pull for more")
+                        Text("Scroll for more")
                             .font(.caption)
                             .foregroundStyle(.secondary)
                             .padding()

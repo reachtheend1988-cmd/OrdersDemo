@@ -5,7 +5,7 @@ public struct OrdersPage: Sendable {
     public let orders: [Order]
     public let nextCursor: String?
 
-    public nonisolated init(orders: [Order], nextCursor: String?) {
+    public init(orders: [Order], nextCursor: String?) {
         self.orders = orders
         self.nextCursor = nextCursor
     }
